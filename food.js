@@ -1,6 +1,11 @@
-// TODO 4.1: Create the food
+let food = { x: 4, y: 16 };
 
-// TODO 4.2: Create a function to update the food
+const updateFood = () => {
+  if (onSnake(food)) {
+    growSnake();
+    food = getNewFoodPosition();
+  }
+};
 
 // Don't change me!
 const drawFood = (gameBoard) => {
