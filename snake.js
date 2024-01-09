@@ -1,8 +1,22 @@
-// TODO 1.1: Create the snake
+const snakeBody = [
+  { x: 11, y: 11 },
+  { x: 11, y: 10 },
+  { x: 11, y: 9 },
+];
 
-// TODO 1.2: Create a function that updates the snake
-// Hint: Search for the documentation for the Array pop() and unshift() methods
-// in the MDN docs.
+const updateSnake = () => {
+  // Remove tail segment
+  snakeBody.pop();
+
+  // Add new head segment
+  const newHead = { ...snakeBody[0] };
+
+  // TODO 2.2: Set the new head's position using the user's inputs 
+  newHead.x += 0;
+  newHead.y += 1;
+
+  snakeBody.unshift(newHead);
+};
 
 // Don't change this function!
 const drawSnake = (gameBoard) => {
