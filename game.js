@@ -1,28 +1,32 @@
 const SNAKE_SPEED = 5;
 
-const gameBoard = document.getElementById('game-board');
+const gameBoard = document.getElementById("game-board");
+let isGameOver = false;
 
 const main = () => {
-  update();
-  draw();
-  // TODO 5.3, 5.4: Add Game Over Alert, and clear interval!
+	update();
+	draw();
+	if (isGameOver) {
+		alert("Game Over");
+		clearInterval(gameLoop);
+	}
 };
 
-// TODO 5.4: Define the interval ID
-// HINT: ONLY EDIT THE LINE BELOW!
-setInterval(main, 1000 / SNAKE_SPEED);
+let gameLoop = setInterval(main, 1000 / SNAKE_SPEED);
 
 const update = () => {
-  console.log('Updating');
-  updateSnake();
-  updateFood();
-  // TODO 5.2: Update Game State
+	console.log("Updating");
+	updateSnake();
+	updateFood();
+	isGameOver = checkGameOver();
 };
 
 const draw = () => {
-  gameBoard.innerHTML = '';
-  drawSnake(gameBoard);
-  drawFood(gameBoard);
+	gameBoard.innerHTML = "";
+	drawSnake(gameBoard);
+	drawFood(gameBoard);
 };
 
-// TODO 5.1: Create a function that checks if the game is over
+const checkGameOver = () => {
+	return snakeOutOfBounds() || snakeIntersectSelf();
+};
